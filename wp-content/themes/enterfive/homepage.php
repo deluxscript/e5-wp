@@ -45,6 +45,7 @@
       </div>
     </div>
   </div>
+  <?php endwhile; ?>
 </section>
 <!-- Services -->
 <section class="p-t-100 p-b-100 services" id="services">
