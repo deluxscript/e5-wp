@@ -13,7 +13,6 @@
 </section>
 <!-- Last Venture Section -->
 <section class="p-t-100 p-b-60 venture" id="venture">
-  
   <div class="venture-layout">
     <div class="p-l-50 p-r-50">
       <p class="venture-header unb-bo">
@@ -22,26 +21,25 @@
       <div class="row">
         <div class="col-md-4">
           <p class="venture-sub-head unb-bo">
-          <?php the_title(); ?>
+            Versus
           </p>
         </div>
         <div class="col-md-8">
-          <p class="venture-sub-text unb-reg"><?php the_content(); ?></p>
+          <p class="venture-sub-text unb-reg">Pioneering Sentiment analysis.<br />Versus is a sentiment analysis engine that enables objective reporting and sentiment measurement for brands —companies and individuals— across all industries.</p>
         </div>
       </div>
     </div>
     <div>
       <div class="featured-v">
-        <a href="<?php echo $latest_link; ?>" class="f-link">
+        <a href="#" class="f-link">
           <div class="f-text unb-bo">
-            Check out <span><?php the_title(); ?></span>
+            Check out versus
           </div>
         </a>
-        <img src="<?php the_post_thumbnail_url(); ?>" height="400" />
+        <img src="<?php echo get_template_directory_uri(); ?>/img/versus.png" height="400" />
       </div>
     </div>
   </div>
-  
 </section>
 <!-- Services -->
 <section class="p-t-100 p-b-100 services" id="services">
