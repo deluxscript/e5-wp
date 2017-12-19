@@ -13,30 +13,35 @@
 </section>
 <!-- Last Venture Section -->
 <section class="p-t-100 p-b-60 venture" id="venture">
+    <?php query_posts('post_type=portfolio&posts_per_page=1'); ?>
+
+    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+
+    <?php $latest_link = get_post_custom_values('latestLink'); ?>
   <div class="venture-layout">
     <div class="p-l-50 p-r-50">
       <p class="venture-header unb-bo">
-        Our Last Venture
+        Our Latest Venture
       </p>
       <div class="row">
         <div class="col-md-4">
           <p class="venture-sub-head unb-bo">
-            Versus
+          <?php the_title(); ?>
           </p>
         </div>
         <div class="col-md-8">
-          <p class="venture-sub-text unb-reg">Pioneering Sentiment analysis.<br />Versus is a sentiment analysis engine that enables objective reporting and<br />sentiment measurement for brands —companies and individuals— across all<br />industries.</p>
+          <p class="venture-sub-text unb-reg"><?php the_content(); ?></p>
         </div>
       </div>
     </div>
     <div>
       <div class="featured-v">
-        <a href="#" class="f-link">
+        <a href="<?php echo $latest_link ?>" class="f-link">
           <div class="f-text unb-bo">
-            Check out versus
+            Check out <span><?php the_title(); ?></span>
           </div>
         </a>
-        <img src="<?php echo get_template_directory_uri(); ?>/img/versus.png" height="400" />
+        <img src="<?php the_post_thumbnail_url(); ?>" height="400" />
       </div>
     </div>
   </div>
@@ -117,7 +122,7 @@
   </p>
   <?php query_posts('post_type=cases_views&posts_per_page=9'); ?>
 
-  <div class="owl-carousel">
+  <div class="slick-carousel">
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
         <?php
