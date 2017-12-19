@@ -13,11 +13,7 @@
 </section>
 <!-- Last Venture Section -->
 <section class="p-t-100 p-b-60 venture" id="venture">
-    <?php query_posts('post_type=latest_views&posts_per_page=1'); ?>
-
-    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-
-    <?php $latest_link = get_post_custom_values('latestLink'); ?>
+  
   <div class="venture-layout">
     <div class="p-l-50 p-r-50">
       <p class="venture-header unb-bo">
@@ -45,7 +41,7 @@
       </div>
     </div>
   </div>
-  <?php endwhile; endif; ?>
+  
 </section>
 <!-- Services -->
 <section class="p-t-100 p-b-100 services" id="services">
