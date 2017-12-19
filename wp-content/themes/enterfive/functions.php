@@ -203,8 +203,11 @@ require get_template_directory() . '/inc/customizer.php';
  // Require cases custom post type
  require_once('cases.php');
 
- // Require cases custom post type
+ // Require portfolio custom post type
  require_once('portfolio.php');
+
+ // Require latest venture custom post type
+ require_once('latest_venture.php');
 
 /**
  * Load Jetpack compatibility file.
