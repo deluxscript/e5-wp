@@ -36,7 +36,7 @@
     </div>
     <div>
       <div class="featured-v">
-        <a href="<?php echo $latest_link ?>" class="f-link">
+        <a href="<?php echo $latest_link; ?>" class="f-link">
           <div class="f-text unb-bo">
             Check out <span><?php the_title(); ?></span>
           </div>
@@ -45,7 +45,7 @@
       </div>
     </div>
   </div>
-  
+  <?php endwhile; endif; ?>
 </section>
 <!-- Services -->
 <section class="p-t-100 p-b-100 services" id="services">
