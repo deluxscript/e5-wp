@@ -13,6 +13,11 @@
 </section>
 <!-- Last Venture Section -->
 <section class="p-t-100 p-b-60 venture" id="venture">
+    <?php query_posts('post_type=latest_views&posts_per_page=1'); ?>
+
+    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+
+    <?php $latest_link = get_post_custom_values('latestLink'); ?>
   <div class="venture-layout">
     <div class="p-l-50 p-r-50">
       <p class="venture-header unb-bo">
@@ -21,25 +26,35 @@
       <div class="row">
         <div class="col-md-4">
           <p class="venture-sub-head unb-bo">
-            Versus
+          <?php the_title(); ?>
           </p>
         </div>
         <div class="col-md-8">
-          <p class="venture-sub-text unb-reg">Pioneering Sentiment analysis.<br />Versus is a sentiment analysis engine that enables objective reporting and sentiment measurement for brands —companies and individuals— across all industries.</p>
+          <p class="venture-sub-text unb-reg"><?php get_the_content(); ?></p>
         </div>
       </div>
     </div>
     <div>
       <div class="featured-v">
-        <a href="#" class="f-link">
+      <?php $latest_link = get_post_custom_values('latestLink');
+          if($latest_link[0] != ""){
+
+      ?>
+          <a href="<?php echo $latest_link; ?>" class="f-link">
+
+      <?php }else{ ?>
+          <a href="#" class="f-link">
+      <?php } ?>
+        <a href="<?php echo $latest_link; ?>" class="f-link">
           <div class="f-text unb-bo">
-            Check out versus
+            Check out <span><?php the_title(); ?></span>
           </div>
         </a>
-        <img src="<?php echo get_template_directory_uri(); ?>/img/versus.png" height="400" />
+        <img src="<?php the_post_thumbnail_url(); ?>" height="400" />
       </div>
     </div>
   </div>
+  <?php endwhile; endif; ?>
 </section>
 <!-- Services -->
 <section class="p-t-100 p-b-100 services" id="services">
