@@ -13,7 +13,7 @@
 </section>
 <!-- Last Venture Section -->
 <section class="p-t-100 p-b-60 venture" id="venture">
-    <?php query_posts('post_type=portfolio&posts_per_page=1'); ?>
+    <?php query_posts('post_type=latest_views&posts_per_page=1'); ?>
 
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
