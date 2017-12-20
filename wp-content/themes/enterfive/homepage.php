@@ -132,10 +132,10 @@
   </p>
   <?php query_posts('post_type=cases_views&posts_per_page=9'); ?>
   
-  <div class="container">
+  <div class="">
 
   <div class='row'>
-    <div class='col-md-8'>
+    <div class='col-md-12'>
 
       <div class="carousel slide media-carousel" id="media">
         <div class="carousel slide media-carousel" id="eventCarousel" data-interval="0">
@@ -162,26 +162,28 @@
             <div class="item <?php if($count == 1){echo ' active';} ?>">
               <div class="col-md-4">
                 <!--<div class="mid">-->
-                  <p class="unb-reg">
+                  <p class="unb-reg no-click text-center">
                      <?php echo get_the_term_list($post->ID, 'cases-type', '', ', ',''); ?>
                   </p>
                   <?php $logo= get_post_custom_values('logoLink');
                       if($logo[0] != ""){
             
                   ?>
-                  <img src="<?echo $logo[0]?>" class="img1"/>
+                  <div class="text-center"><img src="<?echo $logo[0]?>" class="img1"/></div>
             
                   <?php }else{ ?>
-                  <img src="" alt="image" class="img1"/>
+                  <div class="text-center"><img src="" alt="image" class="img1"/></div>
                   <?php } ?>
+                  <div class="view-m text-center">
                   <a href="#<?php the_ID(); ?>" class="case-link unb-reg" data-toggle="modal" data-target="#<?php the_ID(); ?>">View Case</a>
+                  </div>
                 <!--</div>-->
               </div>
             </div>
             <?php endwhile; endif; ?>
           </div>
-          <a data-slide="prev" href="#eventCarousel" class="left carousel-control">‹</a>
-          <a data-slide="next" href="#eventCarousel" class="right carousel-control">›</a>
+          <a data-slide="prev" href="#eventCarousel" class="left carousel-control"><img src="wp-content/themes/enterfive/img/left.png" /></a>
+          <a data-slide="next" href="#eventCarousel" class="right carousel-control"><img src="wp-content/themes/enterfive/img/right.png" /></a>
         </div>
       </div>
 
@@ -290,26 +292,26 @@
   <p class="blog-head p-b-40 unb-bo">
     From The Blog
   </p>
-  <div class="row">
-<?php $the_query = new WP_Query( 'posts_per_page=1' ); ?>
-
-<?php while ($the_query -> have_posts()) : $the_query -> the_post(); ?>
-
-<div class="col-md-6">
-  <p class="blog-title unb-bo">
-    <a href="<?php the_permalink(); ?>" class="unb-bo"><?php the_title(); ?></a>
-  </p>
-</div>
-<div class="col-md-6">
-  <div class="blog-img">
-    <img style="max-width: none;" src="<?php the_post_thumbnail_url(); ?>" width="428" height="286" alt="">
-  </div>
-</div>
-<?php
-endwhile;
-wp_reset_postdata();
-?>
-</div>
+    <div class="row">
+        <?php $the_query = new WP_Query( 'posts_per_page=1' ); ?>
+        
+        <?php while ($the_query -> have_posts()) : $the_query -> the_post(); ?>
+    
+        <div class="col-md-6">
+          <p class="blog-title unb-bo">
+            <a href="<?php the_permalink(); ?>" class="unb-bo"><?php the_title(); ?></a>
+          </p>
+        </div>
+        <div class="col-md-6">
+          <div class="blog-img m-b-40">
+            <img style="max-width: none;" src="<?php the_post_thumbnail_url(); ?>" width="428" height="286" alt="">
+          </div>
+        </div>
+        <?php
+        endwhile;
+        wp_reset_postdata();
+        ?>
+    </div>
 <div class="text-center m-t-40">
   <a style="color: black;" href="http://blog.enterfive.com/" class="blog-btn">See More Posts</a>
 </div>
