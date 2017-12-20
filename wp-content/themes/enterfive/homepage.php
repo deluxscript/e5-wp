@@ -30,7 +30,7 @@
           </p>
         </div>
         <div class="col-md-8">
-          <p class="venture-sub-text unb-reg"><?php get_the_content(); ?></p>
+          <div class="venture-sub-text unb-reg"><?php the_content(); ?></div>
         </div>
       </div>
     </div>
@@ -40,17 +40,17 @@
           if($latest_link[0] != ""){
 
       ?>
-          <a href="<?php echo $latest_link; ?>" class="f-link">
+          <a href="<?php echo $latest_link[0]; ?>" class="f-link">
 
       <?php }else{ ?>
           <a href="#" class="f-link">
       <?php } ?>
-        <a href="<?php echo $latest_link; ?>" class="f-link">
+        <a href="<?php echo $latest_link[0]; ?>" class="f-link">
           <div class="f-text unb-bo">
             Check out <span><?php the_title(); ?></span>
           </div>
         </a>
-        <img src="<?php the_post_thumbnail_url(); ?>" height="400" />
+        <img src="<?php the_post_thumbnail_url(full); ?>" height="400" />
       </div>
     </div>
   </div>
@@ -131,9 +131,19 @@
     Select Cases
   </p>
   <?php query_posts('post_type=cases_views&posts_per_page=9'); ?>
+  
+  <div class="container">
 
-  <div class="slick-carousel">
-    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+  <div class='row'>
+    <div class='col-md-8'>
+
+      <div class="carousel slide media-carousel" id="media">
+        <div class="carousel slide media-carousel" id="eventCarousel" data-interval="0">
+          <div class="carousel-inner onebyone-carosel">
+              <?php
+                $count = 0;
+              ?>
+            <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
         <?php
             $title= str_ireplace('"', '', trim(get_the_title()));
@@ -147,24 +157,40 @@
 
             $title46= str_ireplace('"', '', trim(get_the_title(46)));
             $desc46= get_post_field('post_content', 46);
+            $count++;
         ?>
-    <div class="mid">
-      <p class="unb-reg">
-         <?php echo get_the_term_list($post->ID, 'cases-type', '', ', ',''); ?>
-      </p>
-      <?php $logo= get_post_custom_values('logoLink');
-          if($logo[0] != ""){
+            <div class="item <?php if($count == 1){echo ' active';} ?>">
+              <div class="col-md-4">
+                <!--<div class="mid">-->
+                  <p class="unb-reg">
+                     <?php echo get_the_term_list($post->ID, 'cases-type', '', ', ',''); ?>
+                  </p>
+                  <?php $logo= get_post_custom_values('logoLink');
+                      if($logo[0] != ""){
+            
+                  ?>
+                  <img src="<?echo $logo[0]?>" class="img1"/>
+            
+                  <?php }else{ ?>
+                  <img src="" alt="image" class="img1"/>
+                  <?php } ?>
+                  <a href="#<?php the_ID(); ?>" class="case-link unb-reg" data-toggle="modal" data-target="#<?php the_ID(); ?>">View Case</a>
+                <!--</div>-->
+              </div>
+            </div>
+            <?php endwhile; endif; ?>
+          </div>
+          <a data-slide="prev" href="#eventCarousel" class="left carousel-control">‹</a>
+          <a data-slide="next" href="#eventCarousel" class="right carousel-control">›</a>
+        </div>
+      </div>
 
-      ?>
-          <img src="<?echo $logo[0]?>" class="img1"/>
-
-      <?php }else{ ?>
-          <img src="" alt="image" class="img1"/>
-      <?php } ?>
-      <a href="#<?php the_ID(); ?>" class="case-link unb-reg" data-toggle="modal" data-target="#<?php the_ID(); ?>">View Case</a>
     </div>
-    <?php endwhile; endif; ?>
   </div>
+
+</div>
+
+  
 </section>
 
 <div class="modal fade" id="44" tabindex="-1" role="dialog" aria-hidden="true">
